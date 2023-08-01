@@ -2,11 +2,20 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greet()
 
+    @State var response = "response"
+    
 	var body: some View {
-		Text(greet)
-	}
+        VStack {
+            Text(response)
+            Button("Load") {
+                Task {
+                    response = try await Greeting().greet()
+                }
+            }
+        }
+
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
