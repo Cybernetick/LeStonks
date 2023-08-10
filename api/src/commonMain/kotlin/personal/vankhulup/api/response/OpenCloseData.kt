@@ -1,4 +1,4 @@
-package personal.vankhulup.api
+package personal.vankhulup.api.response
 
 import kotlinx.serialization.Serializable
 

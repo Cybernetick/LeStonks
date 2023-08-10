@@ -9,11 +9,15 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.*
+import personal.vankhulup.api.response.OpenCloseData
+import personal.vankhulup.api.response.PagedResponse
+import personal.vankhulup.api.response.Ticker
 
 class PolygonApi {
 
-  private val client = HttpClient() {
+  private val client = HttpClient {
     install(ContentNegotiation) {
       json(Json {
         ignoreUnknownKeys = true
@@ -30,8 +34,14 @@ class PolygonApi {
   }
 
   suspend fun getDailyOpenClose(): OpenCloseData {
-    return client.get() {
+    return client.get {
       url("https://api.polygon.io/v1/open-close/AAPL/2023-01-09?adjusted=true")
+    }.body()
+  }
+
+  suspend fun queryAllTickers(active: Boolean = true): PagedResponse<Ticker> {
+    return client.get {
+      url("https://api.polygon.io/v3/reference/tickers?active=${active}")
     }.body()
   }
 }
