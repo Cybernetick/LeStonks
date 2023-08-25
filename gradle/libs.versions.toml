@@ -1,15 +1,20 @@
 [versions]
 agp = "8.1.0"
-coroutines = "1.7.3"
-kotlinxserialization = "1.6.0-RC"
-ktor = "2.3.3"
-org-jetbrains-kotlin-android = "1.8.21"
-core-ktx = "1.10.1"
-junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
-espresso-core = "3.5.1"
 appcompat = "1.6.1"
+core-ktx = "1.10.1"
+coroutines = "1.7.3"
+espresso-core = "3.5.1"
+junit = "4.13.2"
+kotlin = "1.9.0"
+kotlininject = "0.6.1"
+kotlinxserialization = "1.6.0-RC"
+ksp = "1.9.0-1.0.13"
+ktor = "2.3.3"
 material = "1.9.0"
+org-jetbrains-kotlin-android = "1.8.21"
+sqldelight = "2.0.0"
+paging-multiplatform = "3.2.0-alpha05-0.2.3"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -18,6 +23,9 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+kotlininject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp", version.ref = "kotlininject" }
+kotlininject-runtime = { module = "me.tatarka.inject:kotlin-inject-runtime", version.ref = "kotlininject" }
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
@@ -30,10 +38,26 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 
+sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-paging = { module = "app.cash.sqldelight:androidx-paging3-extensions", version.ref = "sqldelight" }
+sqldelight-primitive = { module = "app.cash.sqldelight:primitive-adapters", version.ref = "sqldelight" }
+
+paging-common = { module = "app.cash.paging:paging-common", version.ref = "paging-multiplatform" }
+
+
+# Build logic dependencies
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
 android-test = { id = "com.android.test", version.ref = "agp" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 buildConfig = "com.github.gmazzo.buildconfig:4.1.2"
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }

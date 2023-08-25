@@ -1,0 +1,54 @@
+CREATE TABLE IF NOT EXISTS `ticker`(
+    `cik` TEXT PRIMARY KEY,
+    `composite_figi` TEXT NOT NULL ,
+    `currency_name` TEXT NOT NULL ,
+    `last_updated_utc` TEXT NOT NULL ,
+    `asset_locale` TEXT NOT NULL ,
+    `market_type` TEXT NOT NULL ,
+    `display_name` TEXT NOT NULL,
+    `primary_exchange` TEXT NOT NULL,
+    `ticker_symbol` TEXT NOT NULL
+);
+
+--queries
+selectAll:
+SELECT * FROM ticker;
+
+insertOne:
+INSERT INTO ticker(cik,
+composite_figi,
+currency_name,
+last_updated_utc,
+asset_locale,
+market_type,
+display_name,
+primary_exchange,
+ticker_symbol) VALUES (:cik, 
+:composite_figi, 
+:currency_name,
+:last_updated_utc,
+:asset_locale,
+:market_type,
+:display_name,
+:primary_exchange,
+:ticker_symbol);
+
+updateOne:
+UPDATE ticker SET 
+composite_figi =:composite_figi,
+currency_name = :currency_name,
+last_updated_utc = last_updated_utc,
+asset_locale = asset_locale,
+market_type = market_type,
+display_name = display_name,
+primary_exchange = primary_exchange,
+ticker_symbol = :ticker_symbol
+WHERE cik = :cik;
+ 
+ 
+
+
+
+
+
+

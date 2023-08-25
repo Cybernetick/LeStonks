@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Ticker(
+data class TickerResponse(
   @SerialName("active") val isActive: Boolean,
   @SerialName("cik") val cik: String = "",
   @SerialName("composite_figi") val compositeFigi: String = "",

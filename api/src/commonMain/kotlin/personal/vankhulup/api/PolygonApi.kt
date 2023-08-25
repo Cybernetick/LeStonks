@@ -9,11 +9,10 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.*
 import personal.vankhulup.api.response.OpenCloseData
 import personal.vankhulup.api.response.PagedResponse
-import personal.vankhulup.api.response.Ticker
+import personal.vankhulup.api.response.TickerResponse
 
 class PolygonApi {
 
@@ -39,7 +38,7 @@ class PolygonApi {
     }.body()
   }
 
-  suspend fun queryAllTickers(active: Boolean = true): PagedResponse<Ticker> {
+  suspend fun queryAllTickers(active: Boolean = true): PagedResponse<TickerResponse> {
     return client.get {
       url("https://api.polygon.io/v3/reference/tickers?active=${active}")
     }.body()

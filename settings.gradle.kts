@@ -14,6 +14,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "LeStonks"
+includeBuild("sharedBuildLogic")
 include(":androidApp")
 include(":shared")
 include(":api")
+include(":models")
+include(":db-sqldelight")
