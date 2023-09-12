@@ -3,8 +3,10 @@ package personal.vankhulup.buildconvention
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
 class MultiplatformConventionPlugin: Plugin<Project> {
 
   override fun apply(target: Project) {

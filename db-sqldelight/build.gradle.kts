@@ -1,4 +1,5 @@
 import personal.vankhulup.buildconvention.addKspDependencyForAllTargets
+import personal.vankhulup.buildconvention.configureAndroid
 
 plugins {
     id("com.android.library")
@@ -33,8 +34,6 @@ kotlin {
     }
 }
 
-addKspDependencyForAllTargets(libs.kotlininject.compiler)
-
 sqldelight {
     databases {
         create("LeStonksDb") {
@@ -45,8 +44,6 @@ sqldelight {
 
 android {
     namespace = "personal.vankhulup.dbsqldelight"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 28
-    }
 }
+
+configureAndroid()

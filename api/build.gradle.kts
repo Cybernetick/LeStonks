@@ -1,8 +1,9 @@
 plugins {
-    kotlin("multiplatform") version "1.9.0"
     id("com.android.library")
+    id("personal.vankhulup.plugin.multiplatform")
     kotlin("plugin.serialization") version "1.9.0"
     alias(libs.plugins.buildConfig)
+    alias(libs.plugins.ksp)
 }
 
 buildConfig {
@@ -13,26 +14,6 @@ buildConfig {
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "api"
-        }
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {

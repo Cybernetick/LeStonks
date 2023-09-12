@@ -3,6 +3,8 @@ package personal.vankhulup.buildconvention
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.jvm.toolchain.JavaLanguageVersion
@@ -41,7 +43,8 @@ fun Project.configureAndroid() {
   }
 
   dependencies {
-
+    // https://developer.android.com/studio/write/java8-support
+    "coreLibraryDesugaring"(libs.findLibrary("tools.desugarjdklibs").get())
   }
 }
 
@@ -67,3 +70,6 @@ private fun Project.addKspDependencyForAllTargets(
       }
   }
 }
+
+internal val Project.libs: VersionCatalog
+  get() = extensions.getByType<VersionCatalogsExtension>().named("libs")
