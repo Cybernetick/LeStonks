@@ -1,4 +1,4 @@
-import personal.vankhulup.buildconvention.addKspDependencyForAllTargets
+import personal.vankhulup.buildconvention.configureAndroid
 
 plugins {
     id("com.android.library")
@@ -8,29 +8,19 @@ plugins {
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":data"))
+                api(project(":api"))
+                api(project(":db-sqldelight"))
                 implementation(libs.kotlininject.runtime)
             }
         }
-
     }
 }
+
+configureAndroid()
 
 android {
-    namespace = "personal.vankhulup.lestonks"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 28
-    }
+    namespace = "personal.vankhulup.data"
 }
-
-ksp {
-    arg("me.tatarka.inject.dumpGraph", "true")
-}
-
-addKspDependencyForAllTargets(libs.kotlininject.compiler)

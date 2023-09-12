@@ -1,14 +1,13 @@
 package personal.vankhulup.lestonks
 
-import personal.vankhulup.api.PolygonApi
+import me.tatarka.inject.annotations.Inject
+import personal.vankhulup.data.TickersRepository
 
-class Greeting {
-    suspend fun greet(): String {
-        return try {
-            val response = PolygonApi().queryAllTickers(true)
-            response.toString()
-        } catch (e: Exception) {
-            "empty"
-        }
-    }
+@Inject
+class Greeting(private val repository: TickersRepository) {
+
+  suspend fun callLoad(): String {
+    val result = repository.loadTickers()
+    return "loaded ${result.size} items"
+  }
 }

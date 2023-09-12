@@ -1,3 +1,5 @@
+import personal.vankhulup.buildconvention.configureAndroid
+
 plugins {
     id("com.android.library")
     id("personal.vankhulup.plugin.multiplatform")
@@ -17,11 +19,12 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.ktor.client.core)
+                api(libs.ktor.client.core)
                 implementation(libs.ktor.client.auth)
                 implementation(libs.ktor.contentnegotiation)
                 implementation(libs.ktor.kotlinxserialization)
                 implementation(libs.kotlin.coroutines.core)
+                implementation(libs.kotlininject.runtime)
             }
         }
 
@@ -38,11 +41,8 @@ kotlin {
         }
     }
 }
+configureAndroid()
 
 android {
     namespace = "personal.vankhulup.api"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 28
-    }
 }
