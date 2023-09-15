@@ -14,5 +14,10 @@ gradlePlugin {
       id = "personal.vankhulup.plugin.multiplatform"
       implementationClass = "personal.vankhulup.buildconvention.MultiplatformConventionPlugin"
     }
+
+    register("androidLibraryConvention") {
+      id = "personal.vankhulup.plugin.androidFeature"
+      implementationClass = "personal.vankhulup.buildconvention.AndroidFeatureConventionPlugin"
+    }
   }
 }

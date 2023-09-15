@@ -2,15 +2,13 @@ package personal.vankhulup.lestonks.android
 
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Inject
-import personal.vankhulup.lestonks.Greeting
+import personal.vankhulup.androidui.tickerslist.TickersListViewModel
 
 
 @Inject
-class MainScreen(private val greeting: Greeting) {
-  suspend fun greet(): String = greeting.callLoad()
-}
+class MainScreen(private val viewModel: TickersListViewModel)
 
 @Component
 abstract class MainScreenComponent(@Component val applicationComponent: ApplicationComponent) {
-  abstract val screen: MainScreen
+  abstract val screen: TickersListViewModel
 }

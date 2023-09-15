@@ -26,4 +26,14 @@ class TickersRepository(private val api: PolygonApi, private val db: TickerDao) 
     db.insertAll(converted)
     return converted
   }
+
+  suspend fun getAllCachedStocks(): List<Ticker> {
+    var cachedData = db.getAllStockTickers()
+    if (cachedData.isEmpty()) {
+      loadTickers().apply {
+        cachedData = db.getAllStockTickers()
+      }
+    }
+    return cachedData
+  }
 }

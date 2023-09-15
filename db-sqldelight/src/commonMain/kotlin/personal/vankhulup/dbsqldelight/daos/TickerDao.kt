@@ -26,4 +26,8 @@ class TickerDao(private val db: LeStonksDb) {
   fun getAll(): List<Ticker> {
    return db.tickersQueries.selectAll(::Ticker).executeAsList()
   }
+
+  fun getAllStockTickers(): List<Ticker> {
+    return db.tickersQueries.selectAllStocks(::Ticker).executeAsList()
+  }
 }
