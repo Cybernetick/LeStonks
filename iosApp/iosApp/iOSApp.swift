@@ -1,10 +1,12 @@
 import SwiftUI
+import shared
 
 @main
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+            let component = IOSSharedComponent.companion.create();
+            ContentView(component: component)
 		}
 	}
 }

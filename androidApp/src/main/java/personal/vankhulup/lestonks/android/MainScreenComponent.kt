@@ -11,4 +11,6 @@ class MainScreen(private val viewModel: TickersListViewModel)
 @Component
 abstract class MainScreenComponent(@Component val applicationComponent: ApplicationComponent) {
   abstract val screen: TickersListViewModel
+
+  companion object
 }

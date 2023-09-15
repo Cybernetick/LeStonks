@@ -31,6 +31,7 @@ android {
 
 ksp {
     arg("me.tatarka.inject.dumpGraph", "true")
+    arg("me.tatarka.inject.generateCompanionExtensions", "true")
 }
 
 addKspDependencyForAllTargets(libs.kotlininject.compiler)

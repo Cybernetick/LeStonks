@@ -26,11 +26,6 @@ android {
             excludes += "META-INF/*"
         }
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -48,4 +43,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.kotlininject.runtime)
     ksp(libs.kotlininject.compiler)
+}
+
+ksp {
+    arg("me.tatarka.inject.dumpGraph", "true")
+    arg("me.tatarka.inject.generateCompanionExtensions", "true")
 }

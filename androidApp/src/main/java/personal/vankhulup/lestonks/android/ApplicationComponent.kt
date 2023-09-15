@@ -7,4 +7,5 @@ import personal.vankhulup.lestonks.SharedComponent
 
 @Component
 abstract class ApplicationComponent(@get:Provides val application: Application) : SharedComponent {
+  companion object
 }

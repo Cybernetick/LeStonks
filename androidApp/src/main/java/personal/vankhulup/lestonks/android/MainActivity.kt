@@ -23,8 +23,8 @@ class MainActivity() : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    listViewModel = MainScreenComponent::class.create(ApplicationComponent::class.create(application)).screen
+    ApplicationComponent.Companion
+    listViewModel = MainScreenComponent.create(ApplicationComponent.create(application)).screen
     setContent {
       MyApplicationTheme {
         Surface(

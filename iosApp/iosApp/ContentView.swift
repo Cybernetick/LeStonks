@@ -2,15 +2,22 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
+    
 
-    @State var response = "response"
+    private let component: DataTickersRepository
+    @State var response: [ModelsTicker]
+    
+    init(component: IOSSharedComponent) {
+        self.component = component.repository
+        self.response = []
+    }
     
 	var body: some View {
         VStack {
-            Text(response)
+            Text("loaded \(response.count) items")
             Button("Load") {
                 Task {
-                    response = try await Greeting().greet()
+                    response = try await component.getAllCachedStocks()
                 }
             }
         }
@@ -18,8 +25,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}
+//struct ContentView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		ContentView()
+//	}
+//}
